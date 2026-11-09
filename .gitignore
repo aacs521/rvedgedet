@@ -1,0 +1,26 @@
+# quartus
+quartus/db/
+quartus/incremental_db/
+quartus/output_files/
+quartus/qdb/
+quartus/simulation/
+quartus/files.tcl
+quartus/*.qws
+quartus/*_pin_model_dump.txt
+
+# simulation
+build/
+*.vcd
+*.ghw
+*.wlf
+modelsim.ini
+transcript
+
+# software build products
+sw/*/build/
+sw/*/*.elf
+sw/*/*.bin
+sw/*/*.asm
+sw/*/*.hex
+sw/*/*.vhd
+
