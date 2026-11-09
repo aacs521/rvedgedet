@@ -11,7 +11,7 @@
 #   make sw RISCV_PREFIX=riscv64-unknown-elf-
 
 PROJ     ?= rvedgedet
-APP      ?= blink
+APP      ?= lcddemo
 TB       ?= tb
 SIM      ?= ghdl
 WAVES    ?= 0
