@@ -1,0 +1,9 @@
+filename,in_checksum,out_checksum
+data/pgm/allez.pgm,2daf977a,7aed7014
+data/pgm/cliff.pgm,fbfc6db7,c2fd360d
+data/pgm/dark.pgm,987d618a,2cfdc639
+data/pgm/gudrun.pgm,572b1ca7,d1c33fed
+data/pgm/kissme.pgm,48870b2e,39fdd6c9
+data/pgm/pleasetry.pgm,62158845,77f0ee70
+data/pgm/street.pgm,efc749d5,e1fd3414
+data/pgm/train.pgm,a456802c,ebd57644
