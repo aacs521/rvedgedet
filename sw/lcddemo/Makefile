@@ -5,7 +5,7 @@ EFFORT  = -Os
 
 # must match IMEM_SIZE / DMEM_SIZE in rtl/top.vhd
 USER_FLAGS += -Wl,--defsym,__neorv32_rom_size=32k
-USER_FLAGS += -Wl,--defsym,__neorv32_ram_size=16k
+USER_FLAGS += -Wl,--defsym,__neorv32_ram_size=256k
 
 # include libraries
 APP_INC += -I ../lib

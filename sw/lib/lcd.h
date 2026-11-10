@@ -12,10 +12,18 @@
 
 #define lcd_printf(...)    neorv32_uart_printf(LCD_UART, __VA_ARGS__)
 
-static inline void lcd_putc(char c) { neorv32_uart_putc(LCD_UART, c); }
+static inline void
+lcd_putc (char c)
+{
+    neorv32_uart_putc(LCD_UART, c);
+}
 
-static inline void lcd_puts(const char *s) {            // raw: no \n -> \r\n conversion needed
-    while (*s) { neorv32_uart_putc(LCD_UART, *s++); }
+static inline void
+lcd_puts (const char *s) // raw: no \n -> \r\n conversion needed
+{
+    while (*s) {
+        neorv32_uart_putc(LCD_UART, *s++);
+    }
 }
 
 static inline void lcd_clear(void)                 { lcd_puts("\f"); }           // clear + home
@@ -26,9 +34,15 @@ static inline void lcd_clear_row(unsigned row)     { lcd_goto(row, 0); lcd_puts(
 static inline void lcd_cursor(bool on)             { lcd_puts(on ? "\033[?25h" : "\033[?25l"); }  // underline
 static inline void lcd_blink(bool on)              { lcd_puts(on ? "\033[?12h" : "\033[?12l"); }  // blinking block
 
-static inline void lcd_print_at(unsigned row, unsigned col, const char *s) { lcd_goto(row, col); lcd_puts(s); }
+static inline void
+lcd_print_at (unsigned row, unsigned col, const char *s)
+{
+    lcd_goto(row, col); lcd_puts(s);
+}
 
-static inline void lcd_init(void) {
+static inline void
+lcd_init(void)
+{
     neorv32_uart_setup(LCD_UART, LCD_BAUD, 0);
     lcd_clear();
 }

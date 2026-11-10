@@ -69,7 +69,7 @@ begin
             IMEM_EN          => true,                   -- internal instruction memory
             IMEM_SIZE        => 32*1024,                -- keep in sync with sw/*/Makefile
             DMEM_EN          => true,                   -- internal data memory
-            DMEM_SIZE        => 16*1024,                -- keep in sync with sw/*/Makefile
+            DMEM_SIZE        => 256*1024,               -- keep in sync with sw/*/Makefile
             IO_GPIO_NUM      => 8,                      -- 8 gpio pins (-> the green leds)
             IO_CLINT_EN      => true,                   -- machine timer (and software interrupt)
             IO_UART0_RX_FIFO => 64,                     -- power of two
