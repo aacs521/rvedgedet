@@ -11,11 +11,12 @@
 #   make sw RISCV_PREFIX=riscv64-unknown-elf-
 
 PROJ     ?= rvedgedet
-APP      ?= lcddemo
+APP      ?= sobel
 TB       ?= tb
 SIM      ?= ghdl
 WAVES    ?= 0
 GUI      ?= 0
+PY		 ?= .venv/bin/python
 # 1 = also compile the neorv32 library into the simulation
 WITH_NEORV32 ?= 0
 
@@ -46,7 +47,12 @@ ACCEL_SRC  := $(if $(wildcard $(ACCEL_LIST)),$(shell sed -e 's/\#.*//' $(ACCEL_L
                 $(filter-out %_pkg.vhd,$(sort $(wildcard rtl/accel/*.vhd))))
 TB_SRC     := tb/$(TB).vhd
 
-.PHONY: all compile prog sw sw-check upload sim sim-ghdl sim-questa clean distclean
+.PHONY: all compile prog golden sw sw-check upload sim sim-ghdl sim-questa clean distclean
+
+.venv: requirements.txt
+	python3 -m venv .venv
+	.venv/bin/pip install -q -r requirements.txt
+	@touch .venv
 
 all: compile
 compile: $(SOF)
@@ -65,6 +71,12 @@ $(SOF): $(QDIR)/files.tcl $(QDIR)/$(PROJ).qsf $(QDIR)/$(PROJ).sdc $(QDIR)/pins.t
 
 prog: $(SOF)
 	quartus_pgm $(QFLAGS) -m jtag $(if $(CABLE),-c "$(CABLE)") -o "p;$(SOF)$(if $(POS),@$(POS))"
+
+# PYTHON REFERENCE MODEL
+golden: .venv
+	$(PY) scripts/genpattern.py
+	$(PY) scripts/png2pgm.py
+	$(PY) scripts/sobel.py
 
 # SOFTWARE (BOOTLOADER FLOW)
 sw:

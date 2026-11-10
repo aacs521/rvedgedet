@@ -24,3 +24,9 @@ sw/*/*.asm
 sw/*/*.hex
 sw/*/*.vhd
 
+# python
+__pycache__/
+.venv/
+*.pyc
+.pytest_cache/
+
